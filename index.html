@@ -1,28 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StreamHub</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Funtura — Watch · Listen · Chat</title>
+
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">Stream<span>Hub</span></div>
-    <nav>
-      <a href="#home" class="nav-link active">Home</a>
-      <a href="#music" class="nav-link">Music</a>
-      <a href="#chat" class="nav-link">Chat</a>
+  <!-- Login gate overlay (shown when not logged in) -->
+  <div id="loginGate" class="overlay">
+    <div class="card login-card">
+      <h2>Welcome to Funtura</h2>
+      <p class="muted">Sign in to continue. Type a username to create your local account.</p>
+
+      <div class="login-row">
+        <input id="lgUsername" placeholder="Enter username (search-based login)" />
+        <button id="lgBtn">Sign in / Create</button>
+      </div>
+
+      <div class="admin-create-row">
+        <p class="muted small">If you are the site owner, create the <strong>admin</strong> account (one-time):</p>
+        <button id="createAdminBtn" class="danger">Create Admin (one-time)</button>
+        <p class="muted small">Or use one-time admin link: <code>#admin-create?token=YOUR_TOKEN</code></p>
+      </div>
+
+      <div id="loginMsg" class="muted small"></div>
+    </div>
+  </div>
+
+  <header class="topbar" id="topbar">
+    <div class="brand">
+      <div class="logo">Funtura</div>
+      <div class="tag">Watch · Listen · Chat</div>
+    </div>
+
+    <div class="search-area">
+      <input id="globalSearch" placeholder="Search videos, songs, artists, tags..." autocomplete="off" />
+      <button id="searchBtn" title="Search">🔎</button>
+
+      <!-- Search-based login / quick user (secondary) -->
+      <div class="user-login">
+        <input id="loginInput" placeholder="Login / Create (type a username)" />
+        <button id="loginBtn" title="Login or create user">👤</button>
+        <div id="userBadge" class="user-badge" title="Current user (local)"></div>
+      </div>
+    </div>
+
+    <nav class="navlinks">
+      <a href="#home" class="navlink" data-route="#home">Home</a>
+      <a href="#music" class="navlink" data-route="#music">Music</a>
+      <a href="#chat" class="navlink" data-route="#chat">Chat</a>
+      <a href="#library" class="navlink" data-route="#library">Library</a>
+      <label class="toggle">
+        <input id="autoplayToggle" type="checkbox" />
+        <span>Autoplay</span>
+      </label>
     </nav>
   </header>
-  <main id="app">
-    <!-- Dynamic content will be injected here -->
+
+  <main id="app" class="container">
+    <!-- content injected here -->
   </main>
 
-  <footer>
-    <p>© 2025 StreamHub</p>
+  <footer class="footer">
+    <div>© <span id="year"></span> Funtura — Local demo. Deploy to GitHub Pages or Vercel.</div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

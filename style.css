@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #181818;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #ff0000;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #fff;
+}
+
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
+footer {
+  text-align: center;
+  background: #181818;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-card {
+  background: #202020;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.video-card:hover {
+  transform: scale(1.02);
+}
+
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.video-card .info {
+  padding: 0.8rem;
+}
+
+/* Music Player */
+.music-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.music-player {
+  margin-top: 2rem;
+}
+
+.music-list {
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.music-item {
+  display: flex;
+  justify-content: space-between;
+  background: #202020;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.music-item:hover {
+  background: #2a2a2a;
+}
+
+/* Chat Page */
+.chat-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  background: #202020;
+  height: 60vh;
+  border-radius: 10px;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.chat-message {
+  margin-bottom: 1rem;
+}
+
+.chat-message span {
+  color: #ff0000;
+  font-weight: 600;
+}
+
+.chat-input {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+}
+
+.chat-input button {
+  background: #ff0000;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0 6px 6px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: #d00000;

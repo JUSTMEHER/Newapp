@@ -12,7 +12,7 @@
    CONFIG
    ========================= */
 const CONFIG = {
-  YOUTUBE_API_KEY: "", // optional: your YouTube Data API v3 key to enable live search
+  YOUTUBE_API_KEY: "AIzaSyA0SDlwbl-Dim22btLgfIy5OZtM9g3_94Y", // optional: your YouTube Data API v3 key to enable live search
   ADMIN_DEFAULT_USERNAME: "admin", // admin default username when created via UI
   // If you want to provision an admin via a token in the hash, set a token here and visit /#admin-create?token=XXX once
   ADMIN_CREATION_TOKEN: "tuyVha", // optional

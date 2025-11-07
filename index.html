@@ -1,73 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Funtura — Watch · Listen · Chat</title>
-
-  <!-- Google Fonts (Poppins) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Login gate overlay (shown when not logged in) -->
-  <div id="loginGate" class="overlay">
-    <div class="card login-card">
-      <h2>Welcome to Funtura</h2>
-      <p class="muted">Sign in to continue. Type a username to create your local account.</p>
+  <!-- Login modal (required) -->
+  <div id="authModal" class="overlay">
+    <div class="auth-card card">
+      <h1>Funtura</h1>
+      <p class="muted">Sign in to access Funtura — create an account or login. Admin must be created once.</p>
 
-      <div class="login-row">
-        <input id="lgUsername" placeholder="Enter username (search-based login)" />
-        <button id="lgBtn">Sign in / Create</button>
+      <div class="form-row">
+        <label>Username</label>
+        <input id="inUsername" placeholder="username" autocomplete="username" />
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input id="inPassword" type="password" placeholder="password" autocomplete="current-password" />
       </div>
 
-      <div class="admin-create-row">
-        <p class="muted small">If you are the site owner, create the <strong>admin</strong> account (one-time):</p>
-        <button id="createAdminBtn" class="danger">Create Admin (one-time)</button>
-        <p class="muted small">Or use one-time admin link: <code>#admin-create?token=YOUR_TOKEN</code></p>
+      <div class="actions">
+        <button id="btnSignIn" class="btn primary">Sign in</button>
+        <button id="btnRegister" class="btn">Create account</button>
+        <button id="btnAdminCreate" class="btn danger">Create Admin (one-time)</button>
       </div>
 
-      <div id="loginMsg" class="muted small"></div>
+      <div id="authMsg" class="muted small"></div>
+      <hr />
+      <div class="muted tiny">Local demo: accounts and data stored in your browser (IndexedDB). Not secure for production.</div>
     </div>
   </div>
 
-  <header class="topbar" id="topbar">
+  <!-- Top bar -->
+  <header class="topbar">
     <div class="brand">
       <div class="logo">Funtura</div>
-      <div class="tag">Watch · Listen · Chat</div>
+      <div class="tag muted">Watch · Listen · Chat</div>
     </div>
 
     <div class="search-area">
-      <input id="globalSearch" placeholder="Search videos, songs, artists, tags..." autocomplete="off" />
+      <input id="globalSearch" placeholder="Search videos, tracks, artists..." />
       <button id="searchBtn" title="Search">🔎</button>
-
-      <!-- Search-based login / quick user (secondary) -->
-      <div class="user-login">
-        <input id="loginInput" placeholder="Login / Create (type a username)" />
-        <button id="loginBtn" title="Login or create user">👤</button>
-        <div id="userBadge" class="user-badge" title="Current user (local)"></div>
-      </div>
     </div>
 
-    <nav class="navlinks">
-      <a href="#home" class="navlink" data-route="#home">Home</a>
-      <a href="#music" class="navlink" data-route="#music">Music</a>
-      <a href="#chat" class="navlink" data-route="#chat">Chat</a>
-      <a href="#library" class="navlink" data-route="#library">Library</a>
-      <label class="toggle">
-        <input id="autoplayToggle" type="checkbox" />
-        <span>Autoplay</span>
+    <div class="right-actions">
+      <div id="userInfo" class="user-info"></div>
+      <label class="autoplay">
+        <input id="autoplayToggle" type="checkbox" /> Autoplay
       </label>
-    </nav>
+      <button id="logoutBtn" class="btn small">Logout</button>
+    </div>
   </header>
 
+  <!-- Main app area -->
   <main id="app" class="container">
-    <!-- content injected here -->
+    <!-- SPA content injected here -->
   </main>
 
+  <!-- Sticky Live Player -->
+  <div id="livePlayer" class="live-player card hidden">
+    <div class="lp-left">
+      <div class="lp-art" id="lpArt"></div>
+      <div class="lp-meta">
+        <div id="lpTitle" class="lp-title">No track</div>
+        <div id="lpArtist" class="muted lp-artist">—</div>
+      </div>
+    </div>
+    <div class="lp-controls">
+      <button id="prevBtn" class="btn icon">⟸</button>
+      <button id="playPauseBtn" class="btn icon">▶</button>
+      <button id="nextBtn" class="btn icon">⟹</button>
+    </div>
+    <div class="lp-right">
+      <audio id="audioPlayer"></audio>
+    </div>
+  </div>
+
   <footer class="footer">
-    <div>© <span id="year"></span> Funtura — Local demo. Deploy to GitHub Pages or Vercel.</div>
+    <div>© <span id="year"></span> Funtura — Local demo</div>
   </footer>
 
   <script src="script.js" defer></script>
